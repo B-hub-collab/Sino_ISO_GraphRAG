@@ -1,0 +1,28 @@
+// 查看"工程契約"及其相關實體
+MATCH (e:Entity {title: "工程契約"})-[r:RELATED_TO]-(other:Entity)
+RETURN e, r, other
+LIMIT 25
+
+// 查看某個社群內的關係網絡
+MATCH (e:Entity)-[:BELONGS_TO]->(c:Community {title: "Community 0"})
+MATCH (e)-[r:RELATED_TO]-(other:Entity)-[:BELONGS_TO]->(c)
+RETURN e, r, other
+LIMIT 50
+
+// 查看兩個實體間的路徑
+MATCH path = shortestPath(
+  (start:Entity {title: "工程契約"})-[*..5]-(end:Entity {title: "甲方"})
+)
+RETURN path
+
+// 查看最重要的關係（高權重）
+MATCH (e1:Entity)-[r:RELATED_TO]->(e2:Entity)
+WHERE r.weight > 100
+RETURN e1, r, e2
+ORDER BY r.weight DESC
+LIMIT 25
+
+// 查看文本單元提及的實體
+MATCH (t:TextUnit)-[:MENTIONS]->(e:Entity)
+RETURN t, e
+LIMIT 25

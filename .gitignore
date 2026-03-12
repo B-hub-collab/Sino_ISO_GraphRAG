@@ -1,0 +1,103 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/*.log
+*.log.*
+
+# GraphRAG Output
+output/
+cache/
+
+# Query History (可選，看是否需要版本控制)
+query_history/*.json
+query_history/*.md
+
+# Audit Reports (建議版本控制部分範例，其餘忽略)
+audit_reports/*.json
+!audit_reports/.gitkeep
+!audit_reports/example_report.json
+
+# Neo4j
+.neo4j/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Test
+.tox/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary Files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Large Data Files (根據需求調整)
+# input_graphrag/  # 取消註解以忽略輸入資料
+
+# Large Data Files（合約原始資料，機敏不上傳）
+input/
+input_graphrag/
+audit_reports/*.docx
+audit_reports/*.pdf

@@ -1,0 +1,59 @@
+{
+  "batch_id": "batch_20260226_100000",
+  "start_time": "2026-02-26T10:00:00",
+  "end_time": "2026-02-26T10:05:00",
+  "elapsed_seconds": 300.0,
+  "total_rules": 3,
+  "completed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "statistics": {
+    "risk_detected": 1,
+    "compliant": 2,
+    "uncertain": 0,
+    "not_applicable": 0,
+    "high_severity": 0,
+    "medium_severity": 1
+  },
+  "results": [
+    {
+      "rule_id": "RULE_001",
+      "category": "責任險受益人",
+      "risk_pattern": "甲方/機關為受益人",
+      "status": "COMPLIANT",
+      "severity": "LOW",
+      "clause_reference": "第十條",
+      "reason": "未發現受益人為機關之約定。",
+      "recommendation": "維持現有條款。",
+      "success": true,
+      "error": null,
+      "elapsed_seconds": 8.5
+    },
+    {
+      "rule_id": "RULE_002",
+      "category": "專業責任險",
+      "risk_pattern": "甲方/機關列為共同被保險人",
+      "status": "COMPLIANT",
+      "severity": "LOW",
+      "clause_reference": "第十條第二款",
+      "reason": "條款中未將機關列為共同被保險人。",
+      "recommendation": "維持現有條款。",
+      "success": true,
+      "error": null,
+      "elapsed_seconds": 10.2
+    },
+    {
+      "rule_id": "RULE_003",
+      "category": "履約保證金",
+      "risk_pattern": "超過契約價金百分之十",
+      "status": "RISK_DETECTED",
+      "severity": "MEDIUM",
+      "clause_reference": "第八條",
+      "reason": "履約保證金約定為契約價金15%，超過規範上限10%。",
+      "recommendation": "建議向甲方爭取調降至10%以內。",
+      "success": true,
+      "error": null,
+      "elapsed_seconds": 9.8
+    }
+  ]
+}

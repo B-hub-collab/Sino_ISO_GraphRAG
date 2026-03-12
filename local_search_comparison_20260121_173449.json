@@ -1,0 +1,210 @@
+[
+  {
+    "comparison": {
+      "question": "契約中有哪些常見的錯誤樣態？",
+      "neo4j": {
+        "success": true,
+        "time_seconds": 27.281095027923584,
+        "answer_length": 1225,
+        "has_error": false
+      },
+      "graphrag": {
+        "success": true,
+        "time_seconds": 25.797361135482788,
+        "answer_length": 649,
+        "has_error": false
+      },
+      "performance": {
+        "faster_method": "GraphRAG",
+        "time_difference_seconds": 1.483733892440796,
+        "speedup_ratio": 1.0575149483177178
+      },
+      "results": {
+        "both_success": true,
+        "both_failed": false,
+        "only_neo4j_success": false,
+        "only_graphrag_success": false
+      }
+    },
+    "neo4j_result": {
+      "method": "Neo4j Local Search",
+      "question": "契約中有哪些常見的錯誤樣態？",
+      "max_hops": 2,
+      "answer": "```markdown\n# 合約中常見的錯誤樣態\n\n在工程契約或一般商業合約中，常因文件範圍、條款編號、支付機制、角色定義或法規依據不明，導致後續履約或爭議解決時出現漏洞。以下整理常見錯誤樣態，並依據提供之契約條款與事件範例說明。\n\n---\n\n## 1. 文檔與附件範圍不清\n- 未明確列出所有契約附件、圖紙與規範，導致甲乙雙方對「契約文件」定義存歧見  \n  這類問題通常源於第一條「契約文件及效力」未完整載明所有文件 [Data: Entities (363)]。  \n- 未依「押標金保證金暨其他擔保作業辦法」規範處理保證金，易生法規適用與程序爭議  \n  相關法規引用遺漏或錯誤，將導致保證金的收受、保管或退還程序失焦 [Data: Entities (396)]。\n\n## 2. 條款編號／關聯標識錯誤\n- 條款編號錯置或子條款未正確對應，例：將子條款 5.19.6 誤歸屬於非第五條主體，會使合約研讀與執行混亂  \n  條款與子條款的母子關係須正確標示，以維持條文內在邏輯 [Data: Relationships (2); Relationships (3)]。\n\n## 3. 支付條件與申訴機制不完備\n- 未明確約定「契約價金之給付條件」之時程與須附證明文件，往往導致延遲付款爭議  \n  例如條款 5.19.6 所規範的延遲付款事件，若缺乏時限或文件要求，就難以主張履約違約金 [Data: Entities (2); Entities (4)]。  \n- 對申訴對象或爭議解決機構未清楚指定，如申訴目標「行政院主計總處」是否合適，將影響實務操作  \n  明訂申訴機構可避免執行層面的不確定性 [Data: Entities (5)]。\n\n## 4. 當事人角色與責任範圍模糊\n- 未完整或清楚定義甲方與乙方的權利義務，使得責任歸屬不明  \n  甲方（發包人）與乙方（承包人）的基本職責與履約要求，應分別於合約中逐條明列 [Data: Entities (7); Entities (8)]。\n\n## 5. 保險與監造義務落差\n- 未依契約條款 10.1.2 指定「雇主意外責任險」，可能產生保險範圍不足的風險  \n  保險種類、金額及保單交付時點應詳實載明 [Data: Entities (400)]。  \n- 對監造廠商、專案管理廠商之違約金與履約保證條件未明列，易致權利救濟條款失效  \n  例如第 9.4 條關於「品質缺失懲罰性違約金事宜」應具體化 [Data: Entities (32); Entities (33)]。\n\n---\n\n**小結與建議**  \n- 審核合約時，應逐條核對附件清單與法規引用是否完整。  \n- 條款編號與子條款關係須保持一致，避免誤導。  \n- 針對付款條件、申訴機制務必設定明確的時限、對象與流程。  \n- 當事人角色、保險義務、保證金與違約責任等應具體化條文，以利日後執行。  \n```",
+      "error": null,
+      "time_seconds": 27.281095027923584,
+      "timestamp": "2026-01-21T17:31:06.165687",
+      "success": true
+    },
+    "graphrag_result": {
+      "method": "GraphRAG CLI Local Search",
+      "question": "契約中有哪些常見的錯誤樣態？",
+      "answer": "以下列舉合約中常見的三大錯誤樣態，並對應相關條款與規範，供參考。\n\n## 1. 保險錯誤及缺失態樣  \n工程契約第十條第十款（10.10）規定，甲乙雙方均須避免「常見保險錯誤及缺失態樣」所載情形，此文件由採購法主管機關頒布，專門揭示在保險採購或履約期間易發生的錯誤與漏洞，若未依規範操作，將影響雙方的風險轉移與責任分擔[Data: Sources (478); Entities (2163); Relationships (4182, 4184, 4183)]。\n\n## 2. 協調與通知失誤導致的執行錯誤  \n第八條第二款（8.2）明文要求乙方在甲方將部分工作交付他廠商時，必須積極與其他廠商協調配合；若乙方未能通知甲方或無法配合，進而引發作業錯誤、延誤履約或意外事故，該錯誤由歸責方負責並應賠償[Data: Sources (313); Relationships (2823, 2832); Entities (1510)]。\n\n## 3. 偽造或變造契約／履約文件  \n在第十六條第一項第（七）款中，已將「偽造或變造契約或履約相關文件」列為甲方得終止或解除契約的事由之一。此類行為不僅違反誠信原則，也直接觸及合約終止的法律後果[Data: Sources (192); Relationships (1782); Entities (960)]。\n\n---\n\n以上三類為目前工程契約中最易被檢出且影響重大的錯誤樣態，建議在合約擬定與履行過程中，特別關注相關條款要求及配套流程，以降低風險。",
+      "error": null,
+      "time_seconds": 25.797361135482788,
+      "timestamp": "2026-01-21T17:31:33.446823",
+      "success": true
+    },
+    "test_case": {
+      "question": "契約中有哪些常見的錯誤樣態？",
+      "max_hops": 2,
+      "description": "尋找錯誤樣態的一般性問題"
+    }
+  },
+  {
+    "comparison": {
+      "question": "違反個資法的錯誤樣態有哪些？請列出具體案例。",
+      "neo4j": {
+        "success": true,
+        "time_seconds": 8.10995078086853,
+        "answer_length": 37,
+        "has_error": false
+      },
+      "graphrag": {
+        "success": true,
+        "time_seconds": 13.868720769882202,
+        "answer_length": 43,
+        "has_error": false
+      },
+      "performance": {
+        "faster_method": "Neo4j",
+        "time_difference_seconds": 5.758769989013672,
+        "speedup_ratio": 1.7100869221794388
+      },
+      "results": {
+        "both_success": true,
+        "both_failed": false,
+        "only_neo4j_success": false,
+        "only_graphrag_success": false
+      }
+    },
+    "neo4j_result": {
+      "method": "Neo4j Local Search",
+      "question": "違反個資法的錯誤樣態有哪些？請列出具體案例。",
+      "max_hops": 2,
+      "answer": "很抱歉，系統中並無關於「違反個資法錯誤樣態」的相關資料，無法提供具體案例。",
+      "error": null,
+      "time_seconds": 8.10995078086853,
+      "timestamp": "2026-01-21T17:32:04.249404",
+      "success": true
+    },
+    "graphrag_result": {
+      "method": "GraphRAG CLI Local Search",
+      "question": "違反個資法的錯誤樣態有哪些？請列出具體案例。",
+      "answer": "很抱歉，根據目前提供的資料，我無法找到有關「違反個人資料保護法」的錯誤樣態或具體案例。",
+      "error": null,
+      "time_seconds": 13.868720769882202,
+      "timestamp": "2026-01-21T17:32:12.359408",
+      "success": true
+    },
+    "test_case": {
+      "question": "違反個資法的錯誤樣態有哪些？請列出具體案例。",
+      "max_hops": 2,
+      "description": "特定法規的錯誤樣態查詢"
+    }
+  },
+  {
+    "comparison": {
+      "question": "資料委外處理契約中最常出現的錯誤是什麼？",
+      "neo4j": {
+        "success": true,
+        "time_seconds": 16.683283805847168,
+        "answer_length": 37,
+        "has_error": false
+      },
+      "graphrag": {
+        "success": true,
+        "time_seconds": 31.547383308410645,
+        "answer_length": 64,
+        "has_error": false
+      },
+      "performance": {
+        "faster_method": "Neo4j",
+        "time_difference_seconds": 14.864099502563477,
+        "speedup_ratio": 1.8909576601072924
+      },
+      "results": {
+        "both_success": true,
+        "both_failed": false,
+        "only_neo4j_success": false,
+        "only_graphrag_success": false
+      }
+    },
+    "neo4j_result": {
+      "method": "Neo4j Local Search",
+      "question": "資料委外處理契約中最常出現的錯誤是什麼？",
+      "max_hops": 2,
+      "answer": "對不起，無法從所提供的數據表中找到「資料委外處理契約」相關的常見錯誤資訊。",
+      "error": null,
+      "time_seconds": 16.683283805847168,
+      "timestamp": "2026-01-21T17:32:31.230662",
+      "success": true
+    },
+    "graphrag_result": {
+      "method": "GraphRAG CLI Local Search",
+      "question": "資料委外處理契約中最常出現的錯誤是什麼？",
+      "answer": "抱歉，根據您所提供的資料，我們並未在「資料委外處理契約」相關的資料表中找到任何關於常見錯誤類型的統計或描述，因此無法回答此問題。",
+      "error": null,
+      "time_seconds": 31.547383308410645,
+      "timestamp": "2026-01-21T17:32:47.913982",
+      "success": true
+    },
+    "test_case": {
+      "question": "資料委外處理契約中最常出現的錯誤是什麼？",
+      "max_hops": 2,
+      "description": "特定契約類型的錯誤查詢"
+    }
+  },
+  {
+    "comparison": {
+      "question": "契約條款不完整會造成什麼風險？請提供相關案例。",
+      "neo4j": {
+        "success": true,
+        "time_seconds": 53.777934312820435,
+        "answer_length": 1220,
+        "has_error": false
+      },
+      "graphrag": {
+        "success": true,
+        "time_seconds": 31.145891427993774,
+        "answer_length": 966,
+        "has_error": false
+      },
+      "performance": {
+        "faster_method": "GraphRAG",
+        "time_difference_seconds": 22.63204288482666,
+        "speedup_ratio": 1.7266461753759628
+      },
+      "results": {
+        "both_success": true,
+        "both_failed": false,
+        "only_neo4j_success": false,
+        "only_graphrag_success": false
+      }
+    },
+    "neo4j_result": {
+      "method": "Neo4j Local Search",
+      "question": "契約條款不完整會造成什麼風險？請提供相關案例。",
+      "max_hops": 2,
+      "answer": "```markdown\n# 風險概述\n\n合約條款若因撰寫不完整或關鍵條文遺漏，常會衍生下列風險：  \n1. 法律適用與文件優先順序不明，造成不同合約文件間之衝突無法協調。  \n2. 權利義務規範不完整，無法對違約行為或品質缺陷進行有效追訴。  \n3. 解約／終止條件不足，當事人無法依約主張終止或解除合約。  \n4. 缺乏爭議處理機制，糾紛時雙方無明確救濟途徑，訴訟成本及時程大幅增加。  \n\n# 典型案例\n\n## 案例一：文件優先順序爭議  \n某建設專案合約未在「契約文件及效力」中明訂投標文件（投標須知）與工程契約之優先順序，導致後續「投標須知」與「工程契約」中關於保證金退還程序規定互異，雙方爭議無法透過合約直接釐清，最終申請訴訟判決。  \n- 相關條款：[契約條款 (1522)；工程契約 (0)]  \n- 關係依據：Clause 1.3.1 規範文件優先順序 [Data: Relationships (2859); Relationships (2858)]\n\n## 案例二：品質缺陷無處罰  \n某工程案雖訂有品質管控條款，但合約未將「第九條 > 四」（品質缺陷違約金機制）納入主體文本，驗收小組發現重大瑕疵後，甲方無法依合約主張違約金或請求損害賠償，僅能另行協商補救或透過行政程序處理，致成本飆升。  \n- 相關條款：第九條 > 四 (29)  \n- 條款內容：針對品質缺陷之違約金計算與罰則規定 [Data: Entities (29)]\n\n## 案例三：終止／解除權不彰  \n在某市府機關工程契約中，由於未完整納入「第十六條」（契約終止、解除及暫停執行），當發包方因承包商財務不穩需暫停或解除合約時，雙方尋求契約依據卻因條款不足無法主張，造成後續履約責任歸屬不清，最終耗費半年時間重簽補充協議。  \n- 相關條款：第十六條 (19)  \n- 條款說明：規範合約終止、解除及暫停履行之情形與程序 [Data: Entities (19)]\n\n## 案例四：爭議無解、訴訟成本高漲  \n某大型公共工程未包含「第十七條 — 爭議處理」條款，發包方與承包方於工程變更及付款問題上反覆協商失敗，雙方分別向不同管轄法院起訴，結果不僅增加雙邊訴訟費用，也使工程進度延宕逾期。  \n- 相關條款：第十七條 (149)  \n- 條款功能：設計仲裁、訴訟或行政救濟程序 [Data: Entities (149)]\n\n---\n\n### 綜合建議  \n為避免以上風險，合約起草時應：  \n- 於**第一條**明確訂定所有組成文件之優先順序及法律依據 [Data: 第一條 (427)]；  \n- 完整納入品質、遲延、解除、爭議處理等所有核心條款，並具體規範違約金、賠償計算方式；  \n- 定期檢視合約文本與相關法令（如採購法）之對應，以防法規變動造成合約無效或漏洞。  \n\n以上措施可有效降低因條款不完整而引發的法律風險與爭議成本。  \n```",
+      "error": null,
+      "time_seconds": 53.777934312820435,
+      "timestamp": "2026-01-21T17:33:24.465123",
+      "success": true
+    },
+    "graphrag_result": {
+      "method": "GraphRAG CLI Local Search",
+      "question": "契約條款不完整會造成什麼風險？請提供相關案例。",
+      "answer": "**契約條款不完整的風險概述**  \n契約條款若不完整、含糊或違法，將導致風險分配不明、權利義務執行困難，並增加後續協商、爭議或訴訟成本。以下透過幾個典型案例說明常見風險。\n\n---\n\n### 1. 條款無效或部分無法執行  \n依第一條關於「契約文件及效力」之規定，若合約中有條款因違法或無法執行而被認定無效，僅該部分自動失效，且其他條款仍可存續。但當該失效條款正是風險分配或關鍵程序之依據時，雙方將面臨無法依約追究或無法執行原設計權利義務的窘境，必須另行協商或尋求司法救濟，浪費時間與成本【Data: Entities (123); Sources (20)】。\n\n---\n\n### 2. 未約定遲延付款利率引發爭議  \n工程契約第十三條第十款規定，若因非乙方原因甲方延遲付款，應加計年息＿＿％。若標書或契約文本未填寫此利率，則依中華郵政當期牌告一年期機動利率計算。由於該機動利率常有波動且可能與雙方預期相差甚遠，易衍生利息計算基期與金額爭執，難以及時獲得合理補償【Data: Sources (135)】。\n\n---\n\n### 3. 缺乏品質缺失懲罰機制  \n若契約未納入第九條第四項所述的「品質缺失懲罰性違約金事宜」，即便監造或查核發現重大品質缺陷，甲方亦無明確法源對乙方處以懲罰性違約金，導致品質風險無從量化管理，最終可能演變為驗收糾紛或巨額維修成本外溢【Data: Sources (3); Entities (34)】。\n\n---\n\n### 4. 未設爭議處理條款造成訴訟升級  \n合約若缺乏或未明訂「爭議處理條款」，一旦履約爭議發生，雙方將只能仰賴中華民國民事訴訟法之通案規定進入法院程序。相較於契約內部先行談判、調解或仲裁等多元解決機制，訴訟程序耗時長、費用高且不易靈活，雙方利益受損風險大幅提高【Data: Entities (818)】。\n\n---\n\n**建議作法**  \n1. 全面檢視並明定風險分配條款，避免「填白」或「留白」；  \n2. 對關鍵數值（如利率、保證金比例、違約金計算方式）採「必填」格式；  \n3. 加入完整的品質保證與懲罰機制，杜絕合約漏洞；  \n4. 訂定清晰的多階段爭議處理流程，優先以協商、調解或仲裁解決爭端。  \n\n透過以上檢核與補強，可降低因條款不完整而引發的各類履約及法律風險。",
+      "error": null,
+      "time_seconds": 31.145891427993774,
+      "timestamp": "2026-01-21T17:34:18.243091",
+      "success": true
+    },
+    "test_case": {
+      "question": "契約條款不完整會造成什麼風險？請提供相關案例。",
+      "max_hops": 2,
+      "description": "錯誤影響分析查詢"
+    }
+  }
+]

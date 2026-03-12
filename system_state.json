@@ -1,0 +1,212 @@
+{
+  "last_update": "2026-01-20T17:50:00+08:00",
+  "session_info": {
+    "conversation_id": "34edcc67-ee62-4ec2-8d40-fe84ffff61be",
+    "project_name": "契約稽核系統重構",
+    "project_path": "/home/boya/Sino_ISO/contracts"
+  },
+  "current_phase": {
+    "phase_number": 3.5,
+    "phase_name": "Local Search 比較測試",
+    "status": "completed",
+    "completion_percentage": 100
+  },
+  "completed_work": {
+    "phase_1": {
+      "name": "研究與規劃",
+      "tasks": [
+        "研究現有 GraphRAG 輸出結構",
+        "研究現有 Neo4j 導入腳本",
+        "分析官方方案（APOC, neo4j-contrib, neo4j_graphrag）",
+        "撰寫實施計劃文檔"
+      ],
+      "status": "completed"
+    },
+    "phase_2": {
+      "name": "GraphRAG 至 Neo4j 遷移",
+      "tasks": [
+        "創建 APOC Cypher 導入腳本",
+        "創建 APOC 安裝腳本",
+        "創建 Python 導入工具",
+        "創建向量索引工具",
+        "撰寫使用文檔",
+        "創建 walkthrough 報告"
+      ],
+      "status": "completed"
+    },
+    "phase_3": {
+      "name": "Neo4j Local Search 實作與測試",
+      "tasks": [
+        "檢查現有 neo4j_local_search.py 實現",
+        "創建完整測試腳本 (test_local_search.py)",
+        "測試實體提取功能 (4個測試案例)",
+        "測試實體匹配功能 (5個測試案例)",
+        "測試局部子圖檢索 (3個測試案例)",
+        "測試完整 Local Search 流程 (3個查詢)",
+        "測試 main.py API 集成 (2個測試)",
+        "修復 temperature 參數兼容性問題",
+        "修復 Neo4j CALL subquery 語法警告",
+        "撰寫完整測試報告"
+      ],
+      "status": "completed"
+    },
+    "phase_3_5": {
+      "name": "Local Search 比較測試",
+      "tasks": [
+        "研究 Neo4j Local Search 實現",
+        "研究 GraphRAG CLI Local Search 實現",
+        "設計錯誤樣態測試查詢 (4個)",
+        "創建比較測試腳本 (compare_local_search.py)",
+        "執行完整比較測試",
+        "收集性能指標和結果分析",
+        "創建詳細測試報告"
+      ],
+      "status": "completed"
+    }
+  },
+  "created_files": [
+    "/home/boya/Sino_ISO/contracts/scripts/apoc_import_graphrag.cypher",
+    "/home/boya/Sino_ISO/contracts/scripts/setup_apoc.sh",
+    "/home/boya/Sino_ISO/contracts/import_with_apoc.py",
+    "/home/boya/Sino_ISO/contracts/setup_vector_index.py",
+    "/home/boya/Sino_ISO/contracts/APOC_IMPORT_GUIDE.md",
+    "/home/boya/Sino_ISO/contracts/test_local_search.py",
+    "/home/boya/Sino_ISO/contracts/agent_graph/neo4j_local_search.py (更新)",
+    "/home/boya/Sino_ISO/contracts/compare_local_search.py",
+    "/home/boya/Sino_ISO/contracts/local_search_comparison_20260121_173449.json"
+  ],
+  "next_steps": {
+    "immediate": [
+      "開始使用 Local Search進行實際契約稽核",
+      "考慮性能優化（查詢緩存、子圖大小限制）",
+      "探索向量搜索與圖檢索的混合模式"
+    ],
+    "upcoming_phases": [
+      {
+        "phase": 4,
+        "name": "Global Search 實作",
+        "status": "待開始"
+      },
+      {
+        "phase": 5,
+        "name": "實體對齊功能修復",
+        "status": "待開始"
+      },
+      {
+        "phase": 6,
+        "name": "多引擎路由系統完善",
+        "status": "待開始"
+      },
+      {
+        "phase": 7,
+        "name": "MCP 進度追蹤機制",
+        "status": "待開始"
+      }
+    ]
+  },
+  "system_configuration": {
+    "neo4j_uri": "bolt://localhost:7687",
+    "graphrag_output_dir": "/home/boya/Sino_ISO/contracts/output",
+    "apoc_version": "5.27.0",
+    "neo4j_min_version": "5.26",
+    "python_version": "3.8+",
+    "azure_openai_deployment": "o4-mini",
+    "embedding_deployment": "text-embedding-3-large",
+    "embedding_dimensions": 3072
+  },
+  "graphrag_data_status": {
+    "entities_parquet": {
+      "exists": true,
+      "size_kb": 469
+    },
+    "relationships_parquet": {
+      "exists": true,
+      "size_kb": 562
+    },
+    "communities_parquet": {
+      "exists": true,
+      "size_kb": 324
+    },
+    "community_reports_parquet": {
+      "exists": true,
+      "size_kb": 2690
+    },
+    "text_units_parquet": {
+      "exists": true,
+      "size_kb": 521
+    },
+    "documents_parquet": {
+      "exists": true,
+      "size_kb": 276
+    }
+  },
+  "technical_decisions": {
+    "import_method": "APOC (Neo4j 官方工具)",
+    "import_method_rationale": "官方支持、穩定可靠、標準化、易於維護",
+    "vector_index_enabled": true,
+    "vector_dimensions": 3072,
+    "similarity_function": "cosine",
+    "replaced_files": [
+      "import_graphrag_to_neo4j.py（原自定義腳本，改用 APOC）"
+    ]
+  },
+  "import_test_results": {
+    "test_date": "2026-01-20T15:55:00+08:00",
+    "status": "success",
+    "statistics": {
+      "entities": 2193,
+      "relationships_related_to": 4245,
+      "communities": 526,
+      "text_units": 486,
+      "relationships_belongs_to": 5710,
+      "relationships_mentions": 3787
+    },
+    "issues_fixed": [
+      "findings 欄位 JSON 序列化（numpy array）",
+      "entity_ids numpy array 處理邏輯"
+    ]
+  },
+  "local_search_test_results": {
+    "test_date": "2026-01-20T17:50:00+08:00",
+    "status": "success",
+    "test_suites": 5,
+    "total_tests": 17,
+    "passed": 17,
+    "failed": 0,
+    "performance": {
+      "entity_extraction": "2-3秒",
+      "entity_matching": "1-2秒",
+      "1hop_subgraph": "2-3秒",
+      "2hop_subgraph": "5-7秒",
+      "end_to_end_query": "15-25秒"
+    },
+    "issues_fixed": [
+      "o4-mini temperature參數兼容性",
+      "Neo4j CALL subquery語法警告"
+    ]
+  },
+  "local_search_comparison_results": {
+    "test_date": "2026-01-21T17:34:00+08:00",
+    "total_tests": 4,
+    "neo4j_success_rate": "100%",
+    "graphrag_success_rate": "100%",
+    "neo4j_avg_time_seconds": 26.46,
+    "graphrag_avg_time_seconds": 25.59,
+    "overall_faster": "GraphRAG (1.03x)",
+    "key_findings": [
+      "兩種方法成功率都是 100%",
+      "GraphRAG 總體略快 (1.03x)",
+      "Neo4j 在無資料情況下快 1.71-1.89x",
+      "Neo4j 回答更詳細，GraphRAG 更簡潔",
+      "建議根據場景選擇合適方法"
+    ]
+  },
+  "notes": [
+    "階段 1, 2, 3, 3.5 已完成",
+    "GraphRAG 數據已成功導入 Neo4j Aura（2026-01-20）",
+    "向量索引已建立，所有 2193 個實體都有 embedding",
+    "Neo4j Local Search 已通過所有 17 項測試",
+    "Local Search 比較測試已完成：兩種方法都達到 100% 成功率",
+    "系統已可用於實際契約稽核，準備開發 Global Search"
+  ]
+}

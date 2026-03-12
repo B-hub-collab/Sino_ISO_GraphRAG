@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-02-26T10:00:00.000000",
+  "rule": {
+    "id": "RULE_002",
+    "category": "專業責任險",
+    "risk_pattern": "甲方/機關列為共同被保險人",
+    "action": "發出提醒，向甲方提出疑義澄清",
+    "explanation": "約定以機關列為被保險人，其中專業責任險將無法對機關所受損失負賠償責任。"
+  },
+  "query_generation": {
+    "graph_query": "請檢索契約中關於專業責任險的條款，確認是否將甲方或機關列為共同被保險人。",
+    "key_terms": ["專業責任險", "共同被保險人", "機關"],
+    "search_focus": "確認專業責任險是否含有共同被保險人約定"
+  },
+  "local_search_result": {
+    "success": true,
+    "answer": "第十條第二款：專業責任險條款中未將甲方列為共同被保險人。[Data: CLAUSE 10.2]"
+  },
+  "compliance_analysis": {
+    "status": "COMPLIANT",
+    "severity": "LOW",
+    "reason": "專業責任險條款中未將甲方/機關列為共同被保險人，符合規範。",
+    "evidence": "第十條第二款（四）保險金額規定：專業責任險：契約價金總額。",
+    "clause_reference": "第十條第二款",
+    "recommendation": "維持現有條款。"
+  }
+}
