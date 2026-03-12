@@ -11,9 +11,11 @@ import tkinter as tk
 from tkinter import ttk
 
 from app.gui.tab_settings import SettingsTab
+from app.gui.tab_split import SplitTab
+from app.gui.tab_graphrag import GraphragTab
+from app.gui.tab_neo4j import Neo4jImportTab
 from app.gui.tab_audit import AuditTab
 from app.gui.tab_report import ReportTab
-from app.gui.tab_placeholder import PlaceholderTab
 
 
 class AuditApp(tk.Tk):
@@ -81,31 +83,16 @@ class AuditApp(tk.Tk):
         self.tab_settings = SettingsTab(self.notebook)
         self.notebook.add(self.tab_settings, text="  設定  ")
 
-        # Step 1：文件拆分（開發中）
-        self.tab_split = PlaceholderTab(
-            self.notebook,
-            step_num=1,
-            title="文件拆分",
-            description="上傳 PDF/Word 契約文件，自動拆分為 GraphRAG 可處理的文字區塊。",
-        )
+        # Step 1：文件拆分
+        self.tab_split = SplitTab(self.notebook)
         self.notebook.add(self.tab_split, text=" Step 1：文件拆分 ")
 
-        # Step 2：建構知識圖（開發中）
-        self.tab_graphrag = PlaceholderTab(
-            self.notebook,
-            step_num=2,
-            title="建構知識圖",
-            description="呼叫 Microsoft GraphRAG 建立契約知識圖譜，\n產生實體、關係、社群摘要等結構化資料。",
-        )
+        # Step 2：建構知識圖
+        self.tab_graphrag = GraphragTab(self.notebook)
         self.notebook.add(self.tab_graphrag, text=" Step 2：建構知識圖 ")
 
-        # Step 3：匯入 Neo4j（開發中）
-        self.tab_neo4j = PlaceholderTab(
-            self.notebook,
-            step_num=3,
-            title="匯入 Neo4j",
-            description="將 GraphRAG 產生的 parquet 資料與向量 embeddings 匯入 Neo4j 圖資料庫，\n並建立向量索引以支援語意搜尋。",
-        )
+        # Step 3：匯入 Neo4j
+        self.tab_neo4j = Neo4jImportTab(self.notebook)
         self.notebook.add(self.tab_neo4j, text=" Step 3：匯入 Neo4j ")
 
         # Step 4：批次稽核
