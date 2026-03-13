@@ -46,8 +46,10 @@ class GraphragRunner(BaseRunner):
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             try:
-                result = loop.run_until_complete(build_index(config=config, root=root))
-                self._emit(f"建圖結果：{result}")
+                result = loop.run_until_complete(build_index(config=config))
+                self._emit(f"建圖結果：完成 {len(result)} 個步驟")
+                for r in result:
+                    self._emit(f"  - {r.workflow}: {r.result}")
             finally:
                 loop.close()
 
