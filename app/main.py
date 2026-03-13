@@ -10,6 +10,17 @@ import sys
 from pathlib import Path
 
 
+def _setup_ssl():
+    """設定 SSL 憑證路徑（解決 PyInstaller 打包後 Neo4j Aura 連線問題）"""
+    if getattr(sys, "frozen", False):
+        # PyInstaller 打包後：從解壓目錄載入憑證
+        base_dir = Path(sys._MEIPASS)
+        cert_file = base_dir / "certifi" / "cacert.pem"
+        if cert_file.exists():
+            os.environ["SSL_CERT_FILE"] = str(cert_file)
+            os.environ["REQUESTS_CA_BUNDLE"] = str(cert_file)
+
+
 def _setup_paths():
     """修正 PyInstaller 打包環境下的 sys.path"""
     if getattr(sys, "frozen", False):
@@ -29,6 +40,7 @@ def _setup_paths():
 
 
 def main():
+    _setup_ssl()  # 必須在任何網路連線之前設定
     _setup_paths()
 
     # 延遲 import，確保 path 修正完成後才載入 GUI

@@ -138,6 +138,7 @@ def get_neo4j_search() -> Neo4jLocalSearch:
             url=os.getenv("NEO4J_URI", "bolt://localhost:7687"),
             username=os.getenv("NEO4J_USER", "neo4j"),
             password=os.getenv("NEO4J_PASSWORD"),
+            enhanced_schema=False,  # 避免 Aura 雲端版 schema 檢測問題
         )
         llm = AzureChatOpenAI(
             azure_deployment=DEPLOYMENT_NAME,

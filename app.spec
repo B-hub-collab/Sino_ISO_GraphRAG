@@ -16,9 +16,13 @@ block_cipher = None
 ROOT = os.path.abspath('.')
 
 # ── 預先收集所有套件資料（必須在 Analysis 之前）───────────────────
+# 取得 certifi 的 CA 憑證路徑（解決 Neo4j Aura SSL 連線問題）
+import certifi
+
 all_datas = [
     ('prompts/', 'prompts/'),
     ('settings.yaml', '.'),
+    (certifi.where(), 'certifi/'),  # SSL CA 憑證
 ]
 all_binaries = []
 all_hiddenimports = [
@@ -39,6 +43,9 @@ all_hiddenimports = [
     # python-docx
     'docx',
     'docx.oxml',
+    # PyMuPDF (fitz)
+    'fitz',
+    'pymupdf',
     # tkinter
     'tkinter',
     'tkinter.ttk',
@@ -48,7 +55,7 @@ all_hiddenimports = [
 ]
 
 # 完整收集有 C 擴展的套件
-for pkg in ['graphrag', 'lancedb', 'pyarrow', 'neo4j', 'tiktoken', 'pymupdf']:
+for pkg in ['graphrag', 'lancedb', 'pyarrow', 'neo4j', 'tiktoken', 'pymupdf', 'fitz', 'litellm', 'graspologic']:
     pkg_datas, pkg_binaries, pkg_hiddenimports = collect_all(pkg)
     all_datas += pkg_datas
     all_binaries += pkg_binaries
