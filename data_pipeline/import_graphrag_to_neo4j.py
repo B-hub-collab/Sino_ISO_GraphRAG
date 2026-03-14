@@ -18,14 +18,23 @@ GraphRAG 至 Neo4j 完整導入工具
 """
 
 import os
+import sys
 import json
 import pandas as pd
 import lancedb
 from pathlib import Path
 from neo4j import GraphDatabase
 from dotenv import load_dotenv
-from tqdm import tqdm
+from tqdm import tqdm as _tqdm
 from typing import Dict
+from functools import partial
+
+# PyInstaller 打包後 stdout 可能為 None，需要禁用 tqdm
+def tqdm(*args, **kwargs):
+    """Wrapper for tqdm that disables progress bar when stdout is unavailable"""
+    if sys.stdout is None or not hasattr(sys.stdout, 'write'):
+        kwargs['disable'] = True
+    return _tqdm(*args, **kwargs)
 
 load_dotenv()
 
