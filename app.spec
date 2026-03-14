@@ -46,6 +46,9 @@ all_hiddenimports = [
     # PyMuPDF (fitz)
     'fitz',
     'pymupdf',
+    # tiktoken 編碼
+    'tiktoken_ext',
+    'tiktoken_ext.openai_public',
     # tkinter
     'tkinter',
     'tkinter.ttk',
@@ -55,7 +58,7 @@ all_hiddenimports = [
 ]
 
 # 完整收集有 C 擴展的套件
-for pkg in ['graphrag', 'lancedb', 'pyarrow', 'neo4j', 'tiktoken', 'pymupdf', 'fitz', 'litellm', 'graspologic']:
+for pkg in ['graphrag', 'lancedb', 'pyarrow', 'neo4j', 'tiktoken', 'tiktoken_ext', 'pymupdf', 'fitz', 'litellm', 'graspologic']:
     pkg_datas, pkg_binaries, pkg_hiddenimports = collect_all(pkg)
     all_datas += pkg_datas
     all_binaries += pkg_binaries
